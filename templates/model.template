@@ -1,0 +1,27 @@
+import Foundation
+
+
+public struct {{$name}}{{protocols protocols}} {
+    {{#each props}}
+    public var {{nameMap @key this.name}}: {{this.type}}
+    {{/each}}
+
+    public init(
+        {{#each props}}
+        {{{initParam (nameMap @key this.name) this}}}
+        {{/each}}
+    ) {
+        {{#each props}}
+        self.{{nameMap @key this.name}} = {{nameMap @key this.name}}
+        {{/each}}
+    }
+}
+
+
+public extension {{$name}} {
+    public enum CodingKeys: String, CodingKey {
+        {{#each props}}
+        case {{nameMap @key this.name}} = "{{@key}}"
+        {{/each}}
+    }
+}

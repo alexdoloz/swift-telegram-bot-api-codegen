@@ -1,0 +1,43 @@
+---
+User:
+  $protocols: Encodable
+  id: Int
+  is_bot: Bool
+  first_name: String
+  last_name: String?
+  username: String?
+  language_code: String?
+
+Chat:
+  $protocols: Encodable
+  id: Int
+  type: ChatType
+  title: String?
+  username: String?
+  first_name: String?
+  last_name: String?
+  all_members_are_administrators: 
+    type: Bool
+    name: areAllMembersAdministators
+  photo: ChatPhoto?
+  description: 
+    type: String?
+    name: chatDescription
+  invite_link: String?
+  pinned_message: Message?
+OutgoingMessage:
+  $protocols: Encodable
+  chat_id: ChatId
+  text: String
+  parse_mode: ParseMode?
+  disable_web_page_preview:
+    type: Bool
+    default: false
+    name: shouldDisableWebPagePreview
+  disable_notification:
+    type: Bool
+    default: false
+    name: shouldDisableNotification
+  reply_to_message_id: Id?
+  reply_markup: AbstractKeyboard
+...
