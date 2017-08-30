@@ -3,14 +3,25 @@ var Handlebars = require('handlebars')
 
 var registerHelpers = require('./helpers')
 var parseContext = require('./context_parser')
-
+var readTemplateSource = require('./template_reader')
 
 registerHelpers(Handlebars)
 
-var source = fs.readFileSync('templates/model.template', 'utf8')
+var source = readTemplateSource('methods')
 var template = Handlebars.compile(source)
 
-var contexts = parseContext('yaml/models.yml')
+var context = {
+    "getMe": {
+        "input": "Nothing",
+        "output": "User"
+    },
+    "sendMessage": {
+        "input": "OutgoingMessage",
+        "output": "Message"
+    }
+}
+console.log(template(context))
+//var contexts = parseContext('yaml/models.yml')
 
 // node codegen.js --models <file.yml> --output <output_dir>
 // node codegen.js --methods <file.yml> --output <output_dir>
@@ -30,9 +41,9 @@ var contexts = parseContext('yaml/models.yml')
 //         }
 //     }
 // }
-
+/*
 contexts.forEach(function(context) {
     console.log(template(context))
 })
-
+*/
 //console.log(template(context))
