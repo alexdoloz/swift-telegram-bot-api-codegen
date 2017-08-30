@@ -11,6 +11,9 @@ var source = fs.readFileSync('templates/model.template', 'utf8')
 var template = Handlebars.compile(source)
 
 var contexts = parseContext('yaml/models.yml')
+
+// node codegen.js --models <file.yml> --output <output_dir>
+// node codegen.js --methods <file.yml> --output <output_dir>
 //  {
 //     "$name": "User",
 //     "protocols": ["Encodable"],

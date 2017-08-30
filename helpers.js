@@ -23,12 +23,10 @@ function registerHelpers(Handlebars) {
         }
         return nameType
     })
-    
-    // Handlebars.registerHelper('initBody', function(props) {
-    //     for (var prop in props) {
 
-    //     }
-    // })
+    Handlebars.registerHelper('currentDate', function() {
+        return (new Date()).toUTCString()
+    })
 }
 
 module.exports = registerHelpers
